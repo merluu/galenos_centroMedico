@@ -1,0 +1,29 @@
+<header>
+    <nav class="navbar navbar-expand-sm bg-white navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/logo_galenos.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill" id="logo">
+                <label class="form-check-label text-dark" for="logo">Galenos</label>
+            </a>
+        </div>
+        <a class="navbar-brand" style="margin-right: 10px" data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesión"  [routerLink]="['/login']">
+            <img src="assets/img/login_sesion.jpg" alt="Iniciar Sesión" style="width:40px;" class="rounded-pill">
+        </a>
+    </nav>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: #fff" href="#">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" style="color: #fff" href="#" tabindex="-1" aria-disabled="true">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color: #fff" href="#" tabindex="-1" aria-disabled="true">Contactenos</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color: #fff" [routerLink]="['/registro']" tabindex="-1" aria-disabled="true">Registrarse</a></li>
+                    <li class="nav-item" ><a class="nav-link" style="color: #fff" href="#" tabindex="-1" aria-disabled="true" >Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
