@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ServicioPacienteService } from '../../services/servicio-paciente.service';
+import { Paciente } from 'src/app/interface/paciente';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-registro',
@@ -8,25 +11,42 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  registerForm: FormGroup;
+  myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.registerForm = this.fb.group({
-      user: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+  constructor(private router: Router, public restApi: ServicioPacienteService, private formBuilder: FormBuilder) {
+    this.myForm = this.formBuilder.group({
+      run_paciente: ['', Validators.required],
+      nombres: ['', Validators.required],
+      ape_paterno: ['', Validators.required],
+      ape_materno: ['', Validators.required],
+      telefono: [''],
+      comuna: [''],
+      direccion: [''],
+      correo: ['', [Validators.required, Validators.email]],
+      contrasenia: ['', Validators.required]
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //this.onSubmit();
+  }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      // Todos los campos están llenos, redirige a la página deseada
-      this.router.navigate(['rol']);
+
+  addPaciente() {
+    if (this.myForm.valid) {
+      // Configura el encabezado Content-Type como application/json
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+
+      // Envía la solicitud POST con el encabezado configurado
+      this.restApi.addPaciente(this.myForm.value, httpOptions).subscribe((data: {}) => {
+        this.router.navigate(['/paciente-list']);
+      });
     } else {
-      // Muestra un mensaje de error o realiza otra acción según tus necesidades
-      console.log('Por favor, complete todos los campos.');
+      console.log('Por favor, complete todos los campos correctamente.');
     }
   }
 }
