@@ -25,10 +25,10 @@ export class PacienteListComponent implements OnInit{
   }
 
   modificarPaciente(paciente: Paciente) {
-    // Aquí puedes realizar alguna acción, como la navegación a la página de edición
-    // Puedes usar el router para navegar a otra ruta y pasar el ID del paciente a editar, por ejemplo
-    this.router.navigate(['/paciente-modificar', paciente.run_paciente]);
+    const rut = paciente.run_paciente; // Obtener el rut del paciente
+    this.router.navigate([`/paciente-modificar/${rut}`]);
   }
+  
 }
 
 

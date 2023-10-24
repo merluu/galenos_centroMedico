@@ -48,3 +48,9 @@ button:disabled {
     background: #ccc; /* Fondo gris para el botón deshabilitado */
     cursor: not-allowed;
 }
+
+#parrafoRutId {
+    display: inline-block;
+    margin-left: 0px; 
+    padding-left: 0%;
+}

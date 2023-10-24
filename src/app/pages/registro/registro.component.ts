@@ -35,7 +35,6 @@ export class RegistroComponent implements OnInit {
     //this.onSubmit();
   }
 
-
   addPaciente() {
     if (this.myForm.valid) {
       // Configura el encabezado Content-Type como application/json
@@ -53,4 +52,5 @@ export class RegistroComponent implements OnInit {
       console.log('Por favor, complete todos los campos correctamente.');
     }
   }
+  
 }

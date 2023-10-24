@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'paciente-list', component: PacienteListComponent },
-  { path: 'paciente-modificar', component: PacienteModificarComponent },
+  { path: 'paciente-modificar/:rut', component: PacienteModificarComponent },
   { path: 'admin', component: AdminComponent }
 ];
 

@@ -26,4 +26,18 @@ export class ServicioPacienteService {
       httpOptions
     );
   }
+
+  // trae paciente por rut
+  getPacientePorRut(rut: String): Observable<Paciente>{
+    return this.http
+      .get<Paciente>(this.basepath + '/api/pacientes/get/'+rut)
+  }
+
+  updatePaciente(paciente: any, httpOptions: any): Observable<HttpEvent<Paciente>> {
+    return this.http.put<Paciente>(
+      this.basepath + '/api/pacientes/update',
+      JSON.stringify(paciente),
+      httpOptions
+    );
+  }
 }
