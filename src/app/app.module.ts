@@ -12,6 +12,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { PacienteListComponent } from './pages/paciente-list/paciente-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PacienteModificarComponent } from './pages/paciente-modificar/paciente-modificar.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PacienteModificarComponent } from './pages/paciente-modificar/paciente-
     LoginComponent,
     RegistroComponent,
     PacienteListComponent,
-    PacienteModificarComponent
+    PacienteModificarComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.container-wrapper {
+    display: flex;
+    align-items: flex-start; /* Alinea el contenido en la parte superior */
+    justify-content: center; /* Alinea el contenido en el centro horizontalmente */
+    min-height: calc(80vh - 70px); /* Altura mínima, restando la altura del header (ajusta el valor según la altura de tu header) */
+    background-color: white; /* Color de fondo, opcional */
+}
+.container {
+    border: 2px solid blue;
+    padding: 20px; /* Añade un margen interno */
+    text-align: center;
+}

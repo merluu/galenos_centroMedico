@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; /* Alinea el contenido en la parte superior */
-    height: 100vh; /* Ocupa toda la altura de la ventana */
+    height: 77vh; /* Ocupa toda la altura de la ventana */
 }
 
 .login-form {
@@ -15,4 +15,25 @@
     text-align: center;
     max-width: 400px;
     width: 100%;
+}
+
+
+
+.input-with-error {
+    display: flex;
+    flex-direction: column;
+}
+
+.error-message {
+    color: red;
+    margin-top: 4px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-container label {
+    margin-right: 10px; /* Espacio entre el título y el input */
 }

@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { PacienteListComponent } from './pages/paciente-list/paciente-list.component';
 import { PacienteModificarComponent } from './pages/paciente-modificar/paciente-modificar.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'paciente-list', component: PacienteListComponent },
-  { path: 'paciente-modificar', component: PacienteModificarComponent }
+  { path: 'paciente-modificar', component: PacienteModificarComponent },
+  { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({
