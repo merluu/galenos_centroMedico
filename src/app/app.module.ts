@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { PacienteListComponent } from './pages/paciente-list/paciente-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PacienteModificarComponent } from './pages/paciente-modificar/paciente-modificar.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     RegistroComponent,
-    PacienteListComponent
+    PacienteListComponent,
+    PacienteModificarComponent
   ],
   imports: [
     BrowserModule,

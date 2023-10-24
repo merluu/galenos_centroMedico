@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ServicioPacienteService } from '../../services/servicio-paciente.service';
 import { Paciente } from 'src/app/interface/paciente';
 import { HttpHeaders } from '@angular/common/http';
+import { passwordsMatchValidator } from '../../components/custom-validator';
 
 @Component({
   selector: 'app-registro',
@@ -23,7 +24,10 @@ export class RegistroComponent implements OnInit {
       comuna: [''],
       direccion: [''],
       correo: ['', [Validators.required, Validators.email]],
-      contrasenia: ['', Validators.required]
+      contrasenia: ['', Validators.required],
+      contrasenia2: ['', Validators.required]
+    },{
+      validator: passwordsMatchValidator// Agregar el validador personalizado
     });
   }
 

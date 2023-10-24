@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServicioPacienteService } from '../../services/servicio-paciente.service';
 import { Paciente } from 'src/app/interface/paciente'; 
 
@@ -10,7 +11,7 @@ import { Paciente } from 'src/app/interface/paciente';
 export class PacienteListComponent implements OnInit{
 
   paciente: Paciente[] = [];
-  constructor(public restApi: ServicioPacienteService) {}
+  constructor(private router: Router,public restApi: ServicioPacienteService) {}
 
   ngOnInit() {
     this.loadPacientes();
@@ -22,4 +23,12 @@ export class PacienteListComponent implements OnInit{
       this.paciente = data;
     });
   }
+
+  modificarPaciente(paciente: Paciente) {
+    // Aquí puedes realizar alguna acción, como la navegación a la página de edición
+    // Puedes usar el router para navegar a otra ruta y pasar el ID del paciente a editar, por ejemplo
+    this.router.navigate(['/paciente-modificar', paciente.run_paciente]);
+  }
 }
+
+

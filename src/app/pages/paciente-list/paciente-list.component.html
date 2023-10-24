@@ -1,11 +1,11 @@
 <app-header></app-header>
 <br>
 <div class="container custom-container-2 mt-5">
-    <!-- Show it when there is no employee -->
+    <!-- Show it when there is no paciente -->
     <div class="no-data text-center" *ngIf="paciente.length == 0">
       <p>Cargando pacientes</p>
     </div>
-    <!-- Employees list table, it hides when there is no employee -->
+    <!-- Employees list table, it hides when there is no paciente -->
     <div *ngIf="paciente.length !== 0">
       <h3 class="mb-3 text-center">Lista Pacientes</h3>
       <div class="col-md-12">
@@ -20,22 +20,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let row of paciente">
-              <td>{{ row.run_paciente }}</td>
-              <td>{{ row.nombres }}</td>
-              <td>{{ row.ape_paterno }}</td>
-              <td>{{ row.ape_materno }}</td>
-              <td>{{ row.correo }}</td>
+            <tr *ngFor="let paciente of paciente">
+              <td>{{ paciente.run_paciente }}</td>
+              <td>{{ paciente.nombres }}</td>
+              <td>{{ paciente.ape_paterno }}</td>
+              <td>{{ paciente.ape_materno }}</td>
+              <td>{{ paciente.correo }}</td>
+              <td>
+                <button (click)="modificarPaciente(paciente)" class="btn btn-primary">Modificar</button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-
-    <div class="place-items: center">
-      <button class="btn btn-outline-primary" routerLink="/crear-paciente">
-        Agregar Paciente
-      </button>
-    </div>
-    
   </div>
+  <app-footer> </app-footer>
