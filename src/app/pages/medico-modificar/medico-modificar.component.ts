@@ -34,7 +34,6 @@ export class MedicoModificarComponent implements OnInit{
         comuna: [''],
         direccion: [''],
         correo: [{ value: '' }], 
-        contrasenia: ['', Validators.required],
       });
     }
 
@@ -77,7 +76,6 @@ export class MedicoModificarComponent implements OnInit{
         comuna: this.medico.comuna,
         direccion: this.medico.direccion,
         correo: this.medico.correo,
-        contrasenia: this.medico.contrasenia
       });
     });
     

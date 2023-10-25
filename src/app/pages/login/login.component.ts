@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormControl } from '@angular/forms';
-
-
-
-
-
+import { ServicioLoginService } from 'src/app/services/servicio-login.service';
+import { HttpHeaders } from '@angular/common/http'; 
+import { HttpEvent } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +13,7 @@ import { FormControl } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private loginService: ServicioLoginService ) {
     this.loginForm = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
       contrasenia: ['', [Validators.required, Validators.minLength(4)]]
@@ -25,23 +22,44 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // Todos los campos están llenos, redirige a la página deseada
-      this.router.navigate(['pages/home']);
+      // Obtén los valores del formulario
+      const correoControl = this.loginForm.get('correo');
+      const contraseniaControl = this.loginForm.get('contrasenia');
+  
+      if (correoControl && contraseniaControl) {
+        const correo = correoControl.value;
+        const contrasenia = contraseniaControl.value;
+  
+        // Crea un objeto para enviar los datos a la API
+        const loginData = {
+          correo: correo,
+          contrasenia: contrasenia
+        };
+  
+        const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          })
+        };
+  
+        // Realiza la solicitud HTTP POST a la API
+        this.loginService.loginPaciente(loginData, httpOptions).subscribe((response: HttpEvent<boolean>) => {
+          if (response) {
+            // Si la respuesta es true, redirige al home
+            console.log('Usuario valido.');
+            this.router.navigate(['/']);
+          } else {
+            // Si la respuesta es false, muestra un mensaje de usuario inválido
+            console.log('Usuario inválido.');
+          }
+        });
+      }
     } else {
-      // Muestra un mensaje de error o realiza otra acción según tus necesidades
+      // Muestra un mensaje de error si el formulario no es válido
       console.log('Por favor, complete todos los campos.');
     }
   }
-
-  //navegarARegistro() {
-    //this.router.navigate(['/registro']); // Reemplaza 'registro' con la ruta real de tu página de registro
-  //}
-
- // navegarARecuperar() {
-    //this.router.navigate(['/recuperar-contrasenia']); 
- // }
-
-
+  
   ngOnInit() {}
 
 }
