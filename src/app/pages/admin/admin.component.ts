@@ -13,7 +13,7 @@ export class AdminComponent {
     if (userType === 'paciente') {
       this.router.navigate(['/paciente-list']);
     } else if (userType === 'medico') {
-      this.router.navigate(['/registro-medico']);
+      this.router.navigate(['/medico-list']);
     }
   }
 }
