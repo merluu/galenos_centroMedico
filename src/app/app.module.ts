@@ -18,6 +18,7 @@ import { MedicoAgregarComponent } from './pages/medico-agregar/medico-agregar.co
 import { MedicoModificarComponent } from './pages/medico-modificar/medico-modificar.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { MedicoModificarComponent } from './pages/medico-modificar/medico-modifi
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; /* Alinea el contenido en la parte superior */
-    height: 100vh; /* Ocupa toda la altura de la ventana */
+    height: 115vh; /* Ocupa toda la altura de la ventana */
 }
 
 

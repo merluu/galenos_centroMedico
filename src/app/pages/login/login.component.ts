@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServicioLoginService } from 'src/app/services/servicio-login.service';
 import { HttpHeaders } from '@angular/common/http'; 
 import { HttpEvent } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -51,6 +52,7 @@ export class LoginComponent implements OnInit {
           } else {
             // Si la respuesta es false, muestra un mensaje de usuario inválido
             console.log('Usuario inválido.');
+            Swal.fire('Error', 'El email y/o password son incorrectos', 'error');
           }
         });
       }
