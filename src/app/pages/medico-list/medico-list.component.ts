@@ -27,8 +27,13 @@ export class MedicoListComponent implements OnInit {
   }
 
   modificarMedico(medico: Medico) {
-    const rut = medico.run_medico; // Obtener el rut del paciente
+    const rut = medico.run_medico; // Obtener el rut del medico
     this.router.navigate([`/medico-modificar/${rut}`]);
+  }
+
+  disponibilidadMedico(medico: Medico) {
+    const rut = medico.run_medico; // Obtener el rut del médico
+    this.router.navigate([`/medico-agregar-disponibilidad/${rut}`]);
   }
 
   agregarMedico() {

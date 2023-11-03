@@ -9,7 +9,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { MedicoListComponent } from './pages/medico-list/medico-list.component';
 import { MedicoAgregarComponent } from './pages/medico-agregar/medico-agregar.component';
 import { MedicoModificarComponent } from './pages/medico-modificar/medico-modificar.component';
-
+import { MedicoAgregarDisponibilidadComponent } from './pages/medico-agregar-disponibilidad/medico-agregar-disponibilidad.component';
 
 
 const routes: Routes = [
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'medico-list', component: MedicoListComponent },
   { path: 'medico-agregar', component: MedicoAgregarComponent },
   { path: 'medico-modificar/:rut', component: MedicoModificarComponent },
-
+  { path: 'medico-agregar-disponibilidad/:rut', component: MedicoAgregarDisponibilidadComponent},
 
 ];
 

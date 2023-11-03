@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Medico } from '../interface/medico';
 import { Observable } from 'rxjs';
+import { Disponibilidad } from '../interface/disponibilidad';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,15 @@ export class ServicioMedicoService {
     return this.http.put<Medico>(
       this.basepath + '/api/medicos/update',
       JSON.stringify(medico),
+      httpOptions
+    );
+  }
+
+  // para agregar la disponibilidad del médico
+  addDisponibilidad(disponibilidad: any, httpOptions: any): Observable<HttpEvent<Disponibilidad>> {
+    return this.http.post<Disponibilidad>(
+      this.basepath + '/api/medicos/addDisponibilidad',
+      JSON.stringify(disponibilidad),
       httpOptions
     );
   }

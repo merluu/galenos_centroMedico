@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
             // Si la respuesta es false, muestra un mensaje de usuario inválido
             console.log('Usuario inválido.');
             Swal.fire('Error', 'El email y/o password son incorrectos', 'error');
+
+            this.loginForm.reset();
           }
         });
       }
