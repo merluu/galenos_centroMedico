@@ -1,0 +1,8 @@
+.background-image {
+    background-image: url('/assets/img/blur-hospital.jpg'); /* Ruta a tu imagen de fondo en la carpeta de activos */
+    background-size: cover; /* Cubrir toda la ventana */
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    height: 100vh; /* Altura de pantalla completa */
+    position: relative; /* Posición relativa para que otros elementos estén encima de la imagen */
+}

@@ -46,7 +46,7 @@ export class ServicioMedicoService {
   // para agregar la disponibilidad del médico
   addDisponibilidad(disponibilidad: any, httpOptions: any): Observable<HttpEvent<Disponibilidad>> {
     return this.http.post<Disponibilidad>(
-      this.basepath + '/api/medicos/addDisponibilidad',
+      this.basepath + '/api/medicos/add-disponibilidad',
       JSON.stringify(disponibilidad),
       httpOptions
     );

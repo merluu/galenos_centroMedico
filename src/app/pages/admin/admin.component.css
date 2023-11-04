@@ -2,7 +2,7 @@
     display: flex;
     align-items: flex-start; /* Alinea el contenido en la parte superior */
     justify-content: center; /* Alinea el contenido en el centro horizontalmente */
-    min-height: calc(80vh - 70px); /* Altura mínima, restando la altura del header (ajusta el valor según la altura de tu header) */
+    min-height: calc(82vh - 70px); /* Altura mínima, restando la altura del header (ajusta el valor según la altura de tu header) */
     background-color: white; /* Color de fondo, opcional */
 }
 .container {

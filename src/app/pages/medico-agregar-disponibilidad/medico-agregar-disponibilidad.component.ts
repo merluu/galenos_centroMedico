@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Medico } from 'src/app/interface/medico'; 
 import { ServicioMedicoService } from '../../services/servicio-medico.service';
 import { HttpHeaders } from '@angular/common/http'; 
@@ -18,9 +18,9 @@ export class MedicoAgregarDisponibilidadComponent implements OnInit {
 
   constructor(private router: Router, public restApi: ServicioMedicoService , private formBuilder: FormBuilder,
     private route: ActivatedRoute) {
-    this.runMedico = this.route.snapshot.params['runMedico'];
+    this.runMedico = this.route.snapshot.params['rut'];
     this.myForm = this.formBuilder.group({
-      run_medico: [''], 
+      run_medico: [this.runMedico], 
       fecha: ['', Validators.required],
       id_bloque: ['', Validators.required]
       // Define tus campos y validaciones aquí
