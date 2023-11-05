@@ -1,0 +1,43 @@
+<app-header> </app-header>
+<br>
+<div class="container custom-container-2 mt-5">
+    <!-- Show it when there is no paciente -->
+    <div class="no-data text-center" *ngIf="medicos.length == 0">
+    <p>Cargando Médicos</p>
+    </div>
+    <!-- Employees list table, it hides when there is no paciente -->
+    <div *ngIf="medicos.length !== 0">
+    <h3 class="mb-3 text-center">Médicos Especialistas </h3>
+    <div class="col-md-12">
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th scope="col" >Rut</th>
+            <th scope="col" >Nombre</th>
+            <th scope="col" >Apellido Paterno</th>
+            <th scope="col" >Apellido Materno</th>
+            <th scope="col" >Correo</th>
+            <th scope="col" >Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medico of medicos">
+            <td>{{ medico.run_medico }}</td>
+            <td>{{ medico.nombres }}</td>
+            <td>{{ medico.ape_paterno }}</td>
+            <td>{{ medico.ape_materno }}</td>
+            <td>{{ medico.correo }}</td>
+            <td>
+                <input type="radio" name="radioGroup" [checked]="medico === selectedMedico" (change)="seleccionarMedico(medico)">
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="text-center">
+        <button (click)="redirigirSiSeleccionado()" class="btn btn-primary" [disabled]="!selectedMedico">
+        Seleccionar Médico</button>
+    </div>
+</div>
+<app-footer> </app-footer>

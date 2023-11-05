@@ -21,6 +21,13 @@ export class ServicioMedicoService {
       .get<Medico[]>(this.basepath + '/api/medicos')
   }
 
+  // Trae lista de medicos por centro y especialidad
+  traeMedicosPorCentroEspecialidad(idCentro: number, idEspecialidad: number): Observable<Medico[]> {
+    return this.http.get<Medico[]>(
+      `${this.basepath}/api/medicos/obtener/${idCentro}/${idEspecialidad}`
+      );
+  }
+
   addMedico(medico: any, httpOptions: any): Observable<HttpEvent<Medico>> {
     return this.http.post<Medico>(
       this.basepath + '/api/medicos/add',
@@ -29,7 +36,7 @@ export class ServicioMedicoService {
     );
   }
 
-  // trae paciente por rut
+  // trae médico por rut
   getMedicoPorRut(rut: String): Observable<Medico>{
     return this.http
       .get<Medico>(this.basepath + '/api/medicos/get/'+rut)

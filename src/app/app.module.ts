@@ -18,6 +18,8 @@ import { MedicoAgregarComponent } from './pages/medico-agregar/medico-agregar.co
 import { MedicoModificarComponent } from './pages/medico-modificar/medico-modificar.component';
 import { MedicoAgregarDisponibilidadComponent } from './pages/medico-agregar-disponibilidad/medico-agregar-disponibilidad.component';
 import { CentroEspecialidadComponent } from './pages/centro-especialidad/centro-especialidad.component';
+import { MedicoListCentroEspeComponent } from './pages/medico-list-centro-espe/medico-list-centro-espe.component';
+import { ReservarHoraComponent } from './pages/reservar-hora/reservar-hora.component';
 
 
 
@@ -36,7 +38,9 @@ import { CentroEspecialidadComponent } from './pages/centro-especialidad/centro-
     MedicoAgregarComponent,
     MedicoModificarComponent,
     MedicoAgregarDisponibilidadComponent,
-    CentroEspecialidadComponent
+    CentroEspecialidadComponent,
+    MedicoListCentroEspeComponent,
+    ReservarHoraComponent
   ],
   imports: [
     BrowserModule,

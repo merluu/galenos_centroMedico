@@ -24,16 +24,16 @@ export class ServicioReservaService {
   //}
 
 
-  buscarcentroXespecialidad(centroespecialidad: any, httpOptions: any): Observable<HttpEvent<Centroespecialidad>> {
-    return this.http.post<Centroespecialidad>(
-      this.basepath + '/api/reservas/centroXespecialidad',
-      JSON.stringify(centroespecialidad),
-      httpOptions
-    );
+  //buscarcentroXespecialidad(centroespecialidad: any, httpOptions: any): Observable<HttpEvent<Centroespecialidad>> {
+    //return this.http.post<Centroespecialidad>(
+      //this.basepath + '/api/reservas/centro-especialidad',
+      //JSON.stringify(centroespecialidad),
+      //httpOptions
+    //);
   }
 
 
 
 
 
-}
+

@@ -30,7 +30,7 @@
             </select>
         </div>
         <br>
-            <button type="submit" (click)="buscarcentroXespecialidad()">Agregar</button>
+        <button type="submit" (click)="buscarcentroXespecialidad()" [disabled]="!isFormValid">Buscar</button>
     </form>
     </div>
 </div>
