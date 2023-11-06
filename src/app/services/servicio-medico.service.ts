@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Medico } from '../interface/medico';
 import { Observable } from 'rxjs';
 import { Disponibilidad } from '../interface/disponibilidad';
+import {MedicoDisponibilidad} from '../interface/medico-disponibilidad'
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class ServicioMedicoService {
     return this.http.get<Medico[]>(
       `${this.basepath}/api/medicos/obtener/${idCentro}/${idEspecialidad}`
       );
+  }
+
+  // Obtener disponibilidad de un médico por su run_medico y disponible = TRUE
+  obtenerDisponibilidadPorRunMedico(runMedico: string): Observable<MedicoDisponibilidad[]> { // aquí el codigo original tenía un any, que lo cambié a Medico
+    return this.http.get<MedicoDisponibilidad[]>(
+      `${this.basepath}/api/medicos/obtener-disponibilidad/${runMedico}`);
   }
 
   addMedico(medico: any, httpOptions: any): Observable<HttpEvent<Medico>> {

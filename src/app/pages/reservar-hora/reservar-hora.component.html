@@ -1,1 +1,48 @@
-<p>reservar-hora works!</p>
+<app-header></app-header>
+
+<h2>Usted está reservando hora con el Médico {{ runMedico }} {{ nombresMedico }} {{ apePaternoMedico }}</h2>
+<br>
+<div class="container custom-container-2 mt-5">
+    <!-- Show it when there is no paciente -->
+    <div class="no-data text-center" *ngIf="disponibilidades.length == 0">
+    <p>Cargando Disponibilidades del Médico</p>
+    </div>
+    <!-- Employees list table, it hides when there is no paciente -->
+    <div *ngIf="disponibilidades.length !== 0">
+    <h3 class="mb-3 text-center">Horas Disponibles </h3>
+    <div class="col-md-12">
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th scope="col" >Bloque</th>
+            <th scope="col" >fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let disponibilidad of disponibilidades">
+                <td><p *ngIf="disponibilidad.id_bloque==1">09:00-09:59</p>
+                <p *ngIf="disponibilidad.id_bloque==2">10:00-10:59</p>
+                <p *ngIf="disponibilidad.id_bloque==3">11:00-11:59</p>
+                <p *ngIf="disponibilidad.id_bloque==4">12:00-12:59</p>
+                <p *ngIf="disponibilidad.id_bloque==5">13:00-13:59</p>
+                <p *ngIf="disponibilidad.id_bloque==6">14:00-14:59</p>
+                <p *ngIf="disponibilidad.id_bloque==7">15:00-15:59</p>
+                <p *ngIf="disponibilidad.id_bloque==8">16:00-16:59</p>
+                <p *ngIf="disponibilidad.id_bloque==9">17:00-17:59</p>
+                <p *ngIf="disponibilidad.id_bloque==10">18:00-18:59</p>
+                <p *ngIf="disponibilidad.id_bloque==11">19:00-20:00</p></td>
+        
+            <td>{{ disponibilidad.fecha }}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="text-center">
+        <!--<button (click)="redirigirSiSeleccionado()" class="btn btn-primary" [disabled]="!selectedMedico"> 
+        Seleccionar Médico</button>-->
+    </div>
+</div>
+
+
+<app-footer></app-footer>
