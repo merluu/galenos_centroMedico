@@ -1,0 +1,56 @@
+h2 {
+    text-align: center;
+    color: #585756; /* Cambia #FF5733 por el color que desees */
+    font-family: Arial, sans-serif; /* Cambia Arial por la fuente que prefieras */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido en la parte superior */
+    height: 115vh; /* Ocupa toda la altura de la ventana */
+}
+
+
+.reserva-form {
+    background: #fff;
+    border: 2px solid  #007BFF; /* Borde azul */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: #007BFF; /* Fondo azul para el botón */
+    color: #fff; /* Texto blanco para el botón */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:disabled {
+    background: #ccc; /* Fondo gris para el botón deshabilitado */
+    cursor: not-allowed;
+}

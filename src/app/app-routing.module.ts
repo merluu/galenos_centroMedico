@@ -9,7 +9,10 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { MedicoListComponent } from './pages/medico-list/medico-list.component';
 import { MedicoAgregarComponent } from './pages/medico-agregar/medico-agregar.component';
 import { MedicoModificarComponent } from './pages/medico-modificar/medico-modificar.component';
-
+import { MedicoAgregarDisponibilidadComponent } from './pages/medico-agregar-disponibilidad/medico-agregar-disponibilidad.component';
+import { CentroEspecialidadComponent } from './pages/centro-especialidad/centro-especialidad.component'; 
+import {MedicoListCentroEspeComponent } from './pages/medico-list-centro-espe/medico-list-centro-espe.component';
+import { ReservarHoraComponent } from './pages/reservar-hora/reservar-hora.component';
 
 
 const routes: Routes = [
@@ -22,6 +25,11 @@ const routes: Routes = [
   { path: 'medico-list', component: MedicoListComponent },
   { path: 'medico-agregar', component: MedicoAgregarComponent },
   { path: 'medico-modificar/:rut', component: MedicoModificarComponent },
+  { path: 'medico-agregar-disponibilidad/:rut', component: MedicoAgregarDisponibilidadComponent},
+  { path: 'centro-especialidad', component: CentroEspecialidadComponent },
+  { path: 'medico-list-centro-espe/:centroId/:especialidadId', component: MedicoListCentroEspeComponent },
+  {path: 'reservar-hora/:run_medico/:nombres/:ape_paterno',component: ReservarHoraComponent }
+
 
 
 ];

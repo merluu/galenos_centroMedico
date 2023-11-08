@@ -33,6 +33,7 @@ export class ServicioPacienteService {
       .get<Paciente>(this.basepath + '/api/pacientes/get/'+rut)
   }
 
+  //actualiza al paciente
   updatePaciente(paciente: any, httpOptions: any): Observable<HttpEvent<Paciente>> {
     return this.http.put<Paciente>(
       this.basepath + '/api/pacientes/update',

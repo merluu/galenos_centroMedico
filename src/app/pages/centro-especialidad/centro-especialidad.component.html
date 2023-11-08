@@ -1,0 +1,39 @@
+<app-header></app-header>
+<br>
+<div class="container">
+    <div class="register-form">
+    <h3>Eliga centro y Especialidad</h3>
+    <form [formGroup]="myForm">
+        <div>
+            <label for="centro">Seleccione el centro</label>
+            <select class="form-select" id="id_centro" formControlName="id_centro">
+                <option value="6">Concepción</option>
+            <option value="3">Talcahuano</option>
+            <option value="4">Chiguayante</option>
+            <option value="5">Hualpén</option>
+            <option value="7">San Pedro</option>
+            <option value="8">Hualqui</option>
+            <option value="9">Coronel</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="especialidad">Seleccione la Especialidad</label>
+            <select class="form-select" id="id_especialidad" formControlName="id_especialidad">
+                <option value="2">Medicina General</option>
+            <option value="3">Pediatría</option>
+            <option value="4">Cardiología</option>
+            <option value="5">Cirugía</option>
+            <option value="6">Dermatología</option>
+            <option value="7">Ginecología</option>
+            <option value="8">Geriatría</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" (click)="buscarcentroXespecialidad()" [disabled]="!isFormValid">Buscar</button>
+    </form>
+    </div>
+</div>
+<br>
+<app-footer></app-footer>
+

@@ -1,0 +1,83 @@
+<app-header></app-header>
+<br>
+
+<h2>Usted está reservando hora con el Médico {{ runMedico }} {{ nombresMedico }} {{ apePaternoMedico }}</h2>
+<br>
+<div class="container custom-container-2 mt-5">
+    <!-- Show it when there is no paciente -->
+    <div class="no-data text-center" *ngIf="disponibilidadesLoading">
+    <p>Cargando Disponibilidades del Médico</p>
+    </div>
+    <!-- Employees list table, it hides when there is no paciente -->
+    <div *ngIf="disponibilidades.length !== 0">
+    <h3 class="mb-3 text-center"> Seleccione Horas Disponibles </h3>
+    <div class="col-md-12">
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th scope="col" >Bloque</th>
+            <th scope="col" >fecha</th>
+            <th scope="col"> Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let disponibilidad of disponibilidades">
+                <td><p *ngIf="disponibilidad.id_bloque==1">09:00-09:59</p>
+                <p *ngIf="disponibilidad.id_bloque==2">10:00-10:59</p>
+                <p *ngIf="disponibilidad.id_bloque==3">11:00-11:59</p>
+                <p *ngIf="disponibilidad.id_bloque==4">12:00-12:59</p>
+                <p *ngIf="disponibilidad.id_bloque==5">13:00-13:59</p>
+                <p *ngIf="disponibilidad.id_bloque==6">14:00-14:59</p>
+                <p *ngIf="disponibilidad.id_bloque==7">15:00-15:59</p>
+                <p *ngIf="disponibilidad.id_bloque==8">16:00-16:59</p>
+                <p *ngIf="disponibilidad.id_bloque==9">17:00-17:59</p>
+                <p *ngIf="disponibilidad.id_bloque==10">18:00-18:59</p>
+                <p *ngIf="disponibilidad.id_bloque==11">19:00-20:00</p></td>
+            <td>{{ disponibilidad.fecha }}</td>
+            <input type="radio" name="disponibilidad" [(ngModel)]="disponibilidadSeleccionada" [value]="disponibilidad.id_bloque" (change)="setSeleccion(disponibilidad)">
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="container">
+        <div class="reserva-form">
+        <h3>Ingrese sus Datos para la Reserva</h3>
+    <form [formGroup]="reservaForm">
+        <div class="form-group">
+            <input type="text"  id="run_medico_disponibilidad" formControlName="run_medico_disponibilidad"  [hidden]="true">
+            </div>
+            <div class="form-group">
+                <label for="user">Ingrese su Run</label>
+                <input type="text"  id="run_paciente" formControlName="run_paciente">
+            </div>
+        <div class="form-group">
+        <label for="email"> Ingrese Correo Electrónico</label>
+        <input type="email"  id="email" formControlName="correo_paciente">
+        </div>
+        <div>
+        <label for="metodo_pago">Método de Pago</label>
+        <select class="form-select" id="metodo_pago" formControlName="metodo_pago">
+            <option value="1">Crédito</option>
+            <option value="2">Débito</option>
+            <option value="2">Efectivo</option>
+        </select>
+        <div class="form-group">
+            <input type="text"  id="fecha_disponibilidad" formControlName="fecha_disponibilidad"  [hidden]="true">
+        </div>
+        <div class="form-group">
+            <input type="text"  id="id_bloque_disponibilidad" formControlName="id_bloque_disponibilidad"  [hidden]="true">
+        </div>
+    </div>
+            <button type="submit" (click)="addReserva()">Reservar Hora</button>
+    </form>
+</div>
+</div>
+    <div class="text-center">
+        <!--<button (click)="redirigirSiSeleccionado()" class="btn btn-primary" [disabled]="!selectedMedico"> 
+        Seleccionar Médico</button>-->
+    </div>
+</div>
+
+
+<app-footer></app-footer>

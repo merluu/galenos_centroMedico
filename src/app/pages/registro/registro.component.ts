@@ -5,6 +5,7 @@ import { ServicioPacienteService } from '../../services/servicio-paciente.servic
 import { Paciente } from 'src/app/interface/paciente';
 import { HttpHeaders } from '@angular/common/http';
 import { passwordsMatchValidator } from '../../components/custom-validator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -46,11 +47,16 @@ export class RegistroComponent implements OnInit {
 
       // Envía la solicitud POST con el encabezado configurado
       this.restApi.addPaciente(this.myForm.value, httpOptions).subscribe((data: {}) => {
+        Swal.fire('Éxito', 'El paciente se ha registrado correctamente', 'success');
         this.router.navigate(['/paciente-list']);
       });
     } else {
+      Swal.fire('Error', 'No se pudo hacer el registro, inténtelo nuevamente');
+      this.myForm.reset();
+
       console.log('Por favor, complete todos los campos correctamente.');
     }
   }
+  
   
 }

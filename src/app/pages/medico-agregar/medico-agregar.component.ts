@@ -1,18 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ServicioPacienteService } from '../../services/servicio-paciente.service';
 import { Medico } from 'src/app/interface/medico';
 import { HttpHeaders } from '@angular/common/http';
 import { passwordsMatchValidator } from '../../components/custom-validator';
 import { ServicioMedicoService } from '../../services/servicio-medico.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-medico-agregar',
   templateUrl: './medico-agregar.component.html',
   styleUrls: ['./medico-agregar.component.css']
 })
-export class MedicoAgregarComponent implements OnInit{
+export class MedicoAgregarComponent implements OnInit {
   myForm: FormGroup;
 
   constructor(private router: Router, public restApi: ServicioMedicoService, private formBuilder: FormBuilder) {
@@ -26,8 +26,10 @@ export class MedicoAgregarComponent implements OnInit{
       direccion: [''],
       correo: ['', [Validators.required, Validators.email]],
       contrasenia: ['', Validators.required],
-      contrasenia2: ['', Validators.required]
-    },{
+      contrasenia2: ['', Validators.required],
+      id_centro: ['', Validators.required],
+      id_especialidad: ['', Validators.required]
+    }, {
       validator: passwordsMatchValidator// Agregar el validador personalizado
     });
   }
@@ -44,16 +46,26 @@ export class MedicoAgregarComponent implements OnInit{
           'Content-Type': 'application/json'
         })
       };
-
-
       // Envía la solicitud POST con el encabezado configurado
-      this.restApi.addMedico(this.myForm.value, httpOptions).subscribe((data: {}) => {
-        this.router.navigate(['/medico-list']);
-      });
+      this.restApi.addMedico(this.myForm.value, httpOptions).subscribe(
+        (data: {}) => {
+          Swal.fire('Éxito', 'El médico se ha registrado correctamente', 'success')
+            .then((result) => {
+              if (result.isConfirmed) {
+                this.router.navigate(['/medico-list']);
+              }
+            });
+        },
+        (error) => {
+          console.log('error al agregar el médico', error);
+          Swal.fire('Error', 'No se pudo registrar el médico, inténtelo nuevamente', 'error');
+        }
+      );
     } else {
-      console.log('Por favor, complete todos los campos correctamente.');
+      Swal.fire('Error', 'Por favor, complete todos los campos correctamente', 'error');
     }
   }
+  
 
 }
 

@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // Obtén los valores del formulario
       const correoControl = this.loginForm.get('correo');
       const contraseniaControl = this.loginForm.get('contrasenia');
   
@@ -31,7 +30,6 @@ export class LoginComponent implements OnInit {
         const correo = correoControl.value;
         const contrasenia = contraseniaControl.value;
   
-        // Crea un objeto para enviar los datos a la API
         const loginData = {
           correo: correo,
           contrasenia: contrasenia
@@ -43,21 +41,19 @@ export class LoginComponent implements OnInit {
           })
         };
   
-        // Realiza la solicitud HTTP POST a la API
         this.loginService.loginPaciente(loginData, httpOptions).subscribe((response: HttpEvent<boolean>) => {
           if (response) {
-            // Si la respuesta es true, redirige al home
             console.log('Usuario valido.');
             this.router.navigate(['/']);
           } else {
-            // Si la respuesta es false, muestra un mensaje de usuario inválido
             console.log('Usuario inválido.');
             Swal.fire('Error', 'El email y/o password son incorrectos', 'error');
+
+            this.loginForm.reset();
           }
         });
       }
     } else {
-      // Muestra un mensaje de error si el formulario no es válido
       console.log('Por favor, complete todos los campos.');
     }
   }

@@ -25,7 +25,7 @@ export class PacienteListComponent implements OnInit{
   }
 
   modificarPaciente(paciente: Paciente) {
-    const rut = paciente.run_paciente; // Obtener el rut del paciente
+    const rut = paciente.run_paciente; 
     this.router.navigate([`/paciente-modificar/${rut}`]);
   }
   
