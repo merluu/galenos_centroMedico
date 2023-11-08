@@ -10,6 +10,7 @@
         <div class="form-group">
         <label for="fecha">Fecha de la Disponibilidad</label>
         <input type="date"  id="fecha" formControlName="fecha">
+        <p class="error-message" *ngIf="myForm.get('fecha')?.hasError('fechaPasada')" [class.error-text]="myForm.get('fecha')?.hasError('fechaPasada')">La fecha es inválida.</p>
         </div>
         <div>
             <label for="bloque">Seleccione Bloque de Disponibilidad</label>
@@ -28,7 +29,7 @@
             </select>
         </div>
         <br>
-            <button type="submit" (click)="addDisponibilidad()">Agregar</button>
+            <button type="submit" (click)="addDisponibilidad()" [disabled]="myForm.get('fecha')?.hasError('fechaPasada')">Agregar</button>
     </form>
     </div>
 </div>

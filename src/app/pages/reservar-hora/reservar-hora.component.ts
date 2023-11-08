@@ -21,7 +21,8 @@ export class ReservarHoraComponent implements OnInit {
   runMedico: string = '';
   nombresMedico: string = '';
   apePaternoMedico: string = '';
-  disponibilidadSeleccionada: number = 0; 
+  disponibilidadSeleccionada: number = 0;
+  disponibilidadesLoading: boolean = true; // Variable para controlar el mensaje de "Cargando Médicos"
   
 
   constructor(private route: ActivatedRoute, public restApi: ServicioMedicoService,private router: Router ,  private formBuilder: FormBuilder, public restfullApi: ServicioReservaService) { 
@@ -56,8 +57,22 @@ export class ReservarHoraComponent implements OnInit {
         .obtenerDisponibilidadPorRunMedico(this.runMedico)
         .subscribe((data) => {
           this.disponibilidades = data;
-        });
+          this.disponibilidadesLoading = false; // Se ha cargado la información
+         // Verificar si no hay disponibilidades y redirigir en ese caso
+        if (this.disponibilidades.length === 0) {
+          Swal.fire('No hay disponibilidades', 'No hay disponibilidades para este médico en este momento', 'error').then(() => {
+            //this.router.navigate(['/medico-list-centro-espe']); // Redirige a la página de reserva
+          });
+        }
+      },
+      (error) => {
+        console.log('error al cargar las disponibilidades', error);
+        this.disponibilidadesLoading = false; // Ha ocurrido un error
+        Swal.fire('Error', 'No se pudieron cargar las disponibilidades, inténtelo nuevamente', 'error');
+        this.router.navigate(['/centro-especialidad']); // Redirige a la página de lista de médicos del centro y la especialidad
       }
+    );
+}
 
       addReserva() {
         if (this.reservaForm.valid) {
@@ -94,5 +109,6 @@ export class ReservarHoraComponent implements OnInit {
           idBloqueControl.setValue(disponibilidad.id_bloque);
           fechaDisponibilidadControl.setValue(disponibilidad.fecha);
         }
+
       }
 }

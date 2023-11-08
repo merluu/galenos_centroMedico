@@ -1,11 +1,26 @@
 import { Component , OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Medico } from 'src/app/interface/medico'; 
 import { ServicioMedicoService } from '../../services/servicio-medico.service';
 import { HttpHeaders } from '@angular/common/http'; 
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
+
+
+// Función para validar que la fecha no sea pasada
+function fechaNoPasada(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const fechaIngresada = new Date(control.value);
+    const fechaActual = new Date();
+
+    if (fechaIngresada < fechaActual) {
+      return { fechaPasada: true };
+    }
+
+    return null;
+  };
+}
 
 @Component({
   selector: 'app-medico-agregar-disponibilidad',
@@ -21,7 +36,7 @@ export class MedicoAgregarDisponibilidadComponent implements OnInit {
     this.runMedico = this.route.snapshot.params['rut'];
     this.myForm = this.formBuilder.group({
       run_medico: [this.runMedico], 
-      fecha: ['', Validators.required],
+      fecha: ['', [Validators.required, fechaNoPasada()]], 
       id_bloque: ['', Validators.required]
       // Define tus campos y validaciones aquí
     });
@@ -58,6 +73,8 @@ export class MedicoAgregarDisponibilidadComponent implements OnInit {
     Swal.fire('Error', 'Por favor, complete todos los campos correctamente', 'error');
   }
 }
+
+
 
 
 }

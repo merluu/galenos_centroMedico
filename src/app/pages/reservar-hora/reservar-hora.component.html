@@ -5,7 +5,7 @@
 <br>
 <div class="container custom-container-2 mt-5">
     <!-- Show it when there is no paciente -->
-    <div class="no-data text-center" *ngIf="disponibilidades.length == 0">
+    <div class="no-data text-center" *ngIf="disponibilidadesLoading">
     <p>Cargando Disponibilidades del Médico</p>
     </div>
     <!-- Employees list table, it hides when there is no paciente -->
