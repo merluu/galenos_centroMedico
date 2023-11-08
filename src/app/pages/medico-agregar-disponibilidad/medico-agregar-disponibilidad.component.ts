@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
 
 
-// Función para validar que la fecha no sea pasada
 function fechaNoPasada(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const fechaIngresada = new Date(control.value);
@@ -28,8 +27,8 @@ function fechaNoPasada(): ValidatorFn {
   styleUrls: ['./medico-agregar-disponibilidad.component.css']
 })
 export class MedicoAgregarDisponibilidadComponent implements OnInit {
-  myForm: FormGroup; // Agrega la propiedad myForm de tipo FormGroup
-  runMedico: string;  // Define el atributo runMedico
+  myForm: FormGroup; 
+  runMedico: string;  
 
   constructor(private router: Router, public restApi: ServicioMedicoService , private formBuilder: FormBuilder,
     private route: ActivatedRoute) {
@@ -38,7 +37,7 @@ export class MedicoAgregarDisponibilidadComponent implements OnInit {
       run_medico: [this.runMedico], 
       fecha: ['', [Validators.required, fechaNoPasada()]], 
       id_bloque: ['', Validators.required]
-      // Define tus campos y validaciones aquí
+      
     });
   }
 
@@ -47,14 +46,12 @@ export class MedicoAgregarDisponibilidadComponent implements OnInit {
 
   addDisponibilidad() {
   if (this.myForm.valid) {
-    // Configura el encabezado Content-Type como application/json
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
 
-    // Envía la solicitud POST con el encabezado configurado
     this.restApi.addDisponibilidad(this.myForm.value, httpOptions).subscribe(
       (data: {}) => {
         Swal.fire('Éxito', 'La disponibilidad se ha agregado correctamente', 'success')
@@ -73,8 +70,5 @@ export class MedicoAgregarDisponibilidadComponent implements OnInit {
     Swal.fire('Error', 'Por favor, complete todos los campos correctamente', 'error');
   }
 }
-
-
-
 
 }

@@ -12,8 +12,8 @@ import { ServicioReservaService } from '../../services/servicio-reserva.service'
   styleUrls: ['./centro-especialidad.component.css']
 })
 export class CentroEspecialidadComponent  implements OnInit{
-  myForm: FormGroup; // Agrega la propiedad myForm de tipo FormGroup
-  isFormValid: boolean = false; // Propiedad para rastrear la validez del formulario
+  myForm: FormGroup; 
+  isFormValid: boolean = false;
 
   constructor(private router: Router, public restApi: ServicioReservaService, private formBuilder: FormBuilder,
     private route: ActivatedRoute){
@@ -21,7 +21,7 @@ export class CentroEspecialidadComponent  implements OnInit{
       id_centro: ['', Validators.required],
       id_especialidad: ['', Validators.required]
     });
-    // Escucha cambios en el formulario para habilitar/deshabilitar el botón
+    
     this.myForm.valueChanges.subscribe(() => {
       this.isFormValid = this.myForm.valid;
     });

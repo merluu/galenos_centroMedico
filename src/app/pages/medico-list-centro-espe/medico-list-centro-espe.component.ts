@@ -11,8 +11,8 @@ import { ServicioMedicoService } from 'src/app/services/servicio-medico.service'
 export class MedicoListCentroEspeComponent implements OnInit{
 
   medicos: Medico[] = [];
-  centroId: number= 0;  // Variable para almacenar el valor del centroId
-  especialidadId: number= 0;  // Variable para almacenar el valor del especialidadId
+  centroId: number= 0;  
+  especialidadId: number= 0;  
   selectedMedico: Medico | null = null;
 
 
@@ -57,7 +57,6 @@ export class MedicoListCentroEspeComponent implements OnInit{
       const run_medico = this.selectedMedico.run_medico;
       const nombres = this.selectedMedico.nombres;
       const ape_paterno = this.selectedMedico.ape_paterno;
-      // Redirige a otra página aquí, por ejemplo:
       this.router.navigate(['reservar-hora/',run_medico, nombres, ape_paterno]);
     }
   }

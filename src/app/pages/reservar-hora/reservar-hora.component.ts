@@ -22,7 +22,7 @@ export class ReservarHoraComponent implements OnInit {
   nombresMedico: string = '';
   apePaternoMedico: string = '';
   disponibilidadSeleccionada: number = 0;
-  disponibilidadesLoading: boolean = true; // Variable para controlar el mensaje de "Cargando Médicos"
+  disponibilidadesLoading: boolean = true;
   
 
   constructor(private route: ActivatedRoute, public restApi: ServicioMedicoService,private router: Router ,  private formBuilder: FormBuilder, public restfullApi: ServicioReservaService) { 
@@ -57,8 +57,7 @@ export class ReservarHoraComponent implements OnInit {
         .obtenerDisponibilidadPorRunMedico(this.runMedico)
         .subscribe((data) => {
           this.disponibilidades = data;
-          this.disponibilidadesLoading = false; // Se ha cargado la información
-         // Verificar si no hay disponibilidades y redirigir en ese caso
+          this.disponibilidadesLoading = false; 
         if (this.disponibilidades.length === 0) {
           Swal.fire('No hay disponibilidades', 'No hay disponibilidades para este médico en este momento', 'error').then(() => {
             //this.router.navigate(['/medico-list-centro-espe']); // Redirige a la página de reserva
@@ -67,22 +66,20 @@ export class ReservarHoraComponent implements OnInit {
       },
       (error) => {
         console.log('error al cargar las disponibilidades', error);
-        this.disponibilidadesLoading = false; // Ha ocurrido un error
+        this.disponibilidadesLoading = false; 
         Swal.fire('Error', 'No se pudieron cargar las disponibilidades, inténtelo nuevamente', 'error');
-        this.router.navigate(['/centro-especialidad']); // Redirige a la página de lista de médicos del centro y la especialidad
+        this.router.navigate(['/centro-especialidad']); 
       }
     );
 }
 
       addReserva() {
         if (this.reservaForm.valid) {
-          // Configura el encabezado Content-Type como application/json
           const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json'
             })
           };
-          // Envía la solicitud POST con el encabezado configurado
           this.restfullApi.addReserva(this.reservaForm.value, httpOptions).subscribe(
             (data: {}) => {
               Swal.fire('Éxito', 'La reserva se ha hecho correctamente', 'success')
