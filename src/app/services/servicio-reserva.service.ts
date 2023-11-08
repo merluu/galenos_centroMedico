@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Disponibilidad } from '../interface/disponibilidad';
-import { Centroespecialidad } from '../interface/centroespecialidad';
-
+import { Reserva } from '../interface/reserva';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,22 +12,14 @@ export class ServicioReservaService {
 
   constructor(private http: HttpClient) { }
 
+  addReserva(reserva: any, httpOptions: any): Observable<HttpEvent<Reserva>> {
+    return this.http.post<Reserva>(
+      this.basepath + '/api/reservas/add-reserva',
+      JSON.stringify(reserva),
+      httpOptions
+    );
+  }
 
-  //addReserva(reserva: any, httpOptions: any): Observable<HttpEvent<Reserva>> {
-    //return this.http.post<Reserva>(
-      //this.basepath + '/api/medicos/add',
-      //JSON.stringify(medico),
-      //httpOptions
-    //);
-  //}
-
-
-  //buscarcentroXespecialidad(centroespecialidad: any, httpOptions: any): Observable<HttpEvent<Centroespecialidad>> {
-    //return this.http.post<Centroespecialidad>(
-      //this.basepath + '/api/reservas/centro-especialidad',
-      //JSON.stringify(centroespecialidad),
-      //httpOptions
-    //);
   }
 
 

@@ -4,6 +4,7 @@ import { Medico } from '../interface/medico';
 import { Observable } from 'rxjs';
 import { Disponibilidad } from '../interface/disponibilidad';
 import {MedicoDisponibilidad} from '../interface/medico-disponibilidad'
+import { Reserva } from '../interface/reserva';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +66,7 @@ export class ServicioMedicoService {
       httpOptions
     );
   }
+
+  
   
 }
