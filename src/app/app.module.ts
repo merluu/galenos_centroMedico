@@ -21,6 +21,7 @@ import { MedicoAgregarDisponibilidadComponent } from './pages/medico-agregar-dis
 import { CentroEspecialidadComponent } from './pages/centro-especialidad/centro-especialidad.component';
 import { MedicoListCentroEspeComponent } from './pages/medico-list-centro-espe/medico-list-centro-espe.component';
 import { ReservarHoraComponent } from './pages/reservar-hora/reservar-hora.component';
+import { MedicoCancelarDisponibilidadComponent } from './pages/medico-cancelar-disponibilidad/medico-cancelar-disponibilidad.component';
 
 
 
@@ -41,7 +42,8 @@ import { ReservarHoraComponent } from './pages/reservar-hora/reservar-hora.compo
     MedicoAgregarDisponibilidadComponent,
     CentroEspecialidadComponent,
     MedicoListCentroEspeComponent,
-    ReservarHoraComponent
+    ReservarHoraComponent,
+    MedicoCancelarDisponibilidadComponent
   ],
   imports: [
     BrowserModule,

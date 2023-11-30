@@ -1,0 +1,37 @@
+<app-header></app-header>
+<br>
+<div class="container">
+    <div class="register-form">
+    <h3>Cancelar Disponibilidad Médico</h3>
+    <form [formGroup]="myForm">
+        <div class="form-group">
+            <input type="hidden"  id="run" formControlName="run_medico" [value]="runMedico">
+        </div>
+        <div class="form-group">
+        <label for="fecha">Fecha de la Disponibilidad</label>
+        <input type="date"  id="fecha" formControlName="fecha">
+        <p class="error-message" *ngIf="myForm.get('fecha')?.hasError('fechaPasada')" [class.error-text]="myForm.get('fecha')?.hasError('fechaPasada')">La fecha es inválida.</p>
+        </div>
+        <div>
+            <label for="bloque">Seleccione Bloque de Disponibilidad</label>
+            <select class="form-select" id="id_bloque" formControlName="id_bloque">
+                <option value="1">9:00 - 9:59</option>
+                <option value="2">10:00 - 10:59</option>
+                <option value="3">11:00 - 11:59</option>
+                <option value="4">12:00 - 12:59</option>
+                <option value="5">13:00 - 13:59</option>
+                <option value="6">14:00 - 14:59</option>
+                <option value="7">15:00 - 15:59</option>
+                <option value="8">16:00 - 16:59</option>
+                <option value="9">17:00 - 17:59</option>
+                <option value="10">18:00 - 18:59</option>
+                <option value="11">19:00 - 20:00</option>
+            </select>
+        </div>
+        <br>
+            <button type="submit" (click)="cancelDisponibilidad()" [disabled]="myForm.get('fecha')?.hasError('fechaPasada')">Cancelar</button>
+    </form>
+    </div>
+</div>
+<br>
+<app-footer></app-footer>
