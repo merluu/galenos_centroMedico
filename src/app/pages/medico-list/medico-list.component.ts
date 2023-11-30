@@ -38,7 +38,9 @@ export class MedicoListComponent implements OnInit {
 
   cancelarDisponibilidadMedico(medico: Medico) {
     const rut = medico.run_medico; 
-    this.router.navigate([`/medico-cancelar-disponibilidad/${rut}`]);
+    const nombres = medico.nombres;
+    const ape_paterno = medico.ape_paterno;  
+    this.router.navigate([`/medico-cancelar-disponibilidad/${rut}/${nombres}/${ape_paterno}`]);
   }
 
   agregarMedico() {

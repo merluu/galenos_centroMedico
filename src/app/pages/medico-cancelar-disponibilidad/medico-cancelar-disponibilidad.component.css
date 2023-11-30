@@ -52,3 +52,9 @@ button:disabled {
 .error-text {
     color: red;
 }
+
+h2 {
+    text-align: center;
+    color: #585756; /* Cambia #FF5733 por el color que desees */
+    font-family: Arial, sans-serif; /* Cambia Arial por la fuente que prefieras */
+}

@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'centro-especialidad', component: CentroEspecialidadComponent },
   { path: 'medico-list-centro-espe/:centroId/:especialidadId', component: MedicoListCentroEspeComponent },
   {path: 'reservar-hora/:run_medico/:nombres/:ape_paterno',component: ReservarHoraComponent },
-  { path: 'medico-cancelar-disponibilidad/:rut', component: MedicoCancelarDisponibilidadComponent},
+  { path: 'medico-cancelar-disponibilidad/:rut/:nombres/:ape_paterno', component: MedicoCancelarDisponibilidadComponent},
 
 
 
