@@ -1,0 +1,15 @@
+<app-header></app-header>
+<br>
+
+<div class="container">
+    <div class="cancelar-form">
+    <h3>Ingrese su Run para Cancelar la Reserva</h3>
+    <form [formGroup]="cancelarForm">
+        <div class="form-group">
+        <label for="user">Ingrese su Run</label>
+        <input type="text" formControlName="run_paciente" id="rut" placeholder="Ingrese su RUT" />
+        </div>
+        <button type="submit" (click)="cancelReserva()">Enviar</button>
+    </form>
+</div>
+</div>

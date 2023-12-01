@@ -20,6 +20,13 @@ export class ServicioReservaService {
     );
   }
 
+  obtenerReservaPorRunPaciente(runPaciente: string): Observable<Reserva[]> {
+    return this.http.get<Reserva[]>(
+      `${this.basepath}/api/reservas/obtener-Reserva/${runPaciente}`
+      );
+  }
+
+
   }
 
 

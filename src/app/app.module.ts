@@ -22,6 +22,8 @@ import { CentroEspecialidadComponent } from './pages/centro-especialidad/centro-
 import { MedicoListCentroEspeComponent } from './pages/medico-list-centro-espe/medico-list-centro-espe.component';
 import { ReservarHoraComponent } from './pages/reservar-hora/reservar-hora.component';
 import { MedicoCancelarDisponibilidadComponent } from './pages/medico-cancelar-disponibilidad/medico-cancelar-disponibilidad.component';
+import { RutCancelarReservaComponent } from './pages/rut-cancelar-reserva/rut-cancelar-reserva.component';
+import { CancelarReservaPacienteComponent } from './pages/cancelar-reserva-paciente/cancelar-reserva-paciente.component';
 
 
 
@@ -43,7 +45,9 @@ import { MedicoCancelarDisponibilidadComponent } from './pages/medico-cancelar-d
     CentroEspecialidadComponent,
     MedicoListCentroEspeComponent,
     ReservarHoraComponent,
-    MedicoCancelarDisponibilidadComponent
+    MedicoCancelarDisponibilidadComponent,
+    RutCancelarReservaComponent,
+    CancelarReservaPacienteComponent
   ],
   imports: [
     BrowserModule,
