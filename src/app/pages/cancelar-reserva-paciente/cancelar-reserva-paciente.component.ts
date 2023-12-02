@@ -4,6 +4,8 @@ import { Reserva } from 'src/app/interface/reserva';
 import { ServicioReservaService } from 'src/app/services/servicio-reserva.service';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http'; 
+import { CancelarReservaReq } from 'src/app/interface/cancelar-reserva-req';
 
 @Component({
   selector: 'app-cancelar-reserva-paciente',
@@ -12,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CancelarReservaPacienteComponent {
   reservas: Reserva[] = [];
+  cancelarReservaReq: CancelarReservaReq| null = null;
   run_paciente: string; 
   selectedReserva: Reserva | null = null;
   disponibilidadSeleccionada: string; 
@@ -19,6 +22,7 @@ export class CancelarReservaPacienteComponent {
   constructor(private router: Router,public restApi: ServicioReservaService, private route: ActivatedRoute) {
     this.run_paciente = this.route.snapshot.params['rut'];
     this.disponibilidadSeleccionada = '';
+    this.cancelarReservaReq =null;
   
   }
 
@@ -51,39 +55,18 @@ export class CancelarReservaPacienteComponent {
       );
   }
 
-  getHoraPorIdBloque(idBloque: string): string {
-    switch (idBloque) {
-        case '1':
-            return '09:00-09:59';
-        case '2':
-            return '10:00-10:59';
-        case '3':
-            return '11:00-11:59';
-        case '4':
-              return '12:00-12:59';
-        case '5':
-              return '13:00-13:59';
-        case '6':
-              return '14:00-14:59';
-        case '7':
-              return '15:00-15:59';
-        case '8':
-              return '16:00-16:59';
-        case '9':
-              return '17:00-17:59';
-        case '10':
-              return '18:00-18:59';
-        case '11':
-              return '19:00-20:00';
-        default:
-            return '';
-    }
-}
-
 cancelarReserva() {
   if (this.selectedReserva) {
       const { id_bloque_disponibilidad, fecha_disponibilidad, run_medico_disponibilidad, run_paciente } = this.selectedReserva;
 
+    this.cancelarReservaReq = {
+      run_medico: run_medico_disponibilidad,
+      fecha: fecha_disponibilidad, 
+      id_bloque: id_bloque_disponibilidad, 
+      
+    };
+
+    console.log("se construye el objeto",this.cancelarReservaReq)
       Swal.fire({
           title: 'Reserva A Cancelar',
           html: `
@@ -111,10 +94,22 @@ cancelarReserva() {
 
 //realiza la cancelación
 realizarCancelacion() {
-  // Agrega aquí el código para realizar la cancelación de la reserva
-  // Puedes hacer una llamada a tu servicio para realizar la anulación
-  // y manejar cualquier lógica adicional necesaria
-  Swal.fire('Cancelada', 'La reserva ha sido cancelada', 'success');
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  this.restApi.anularReserva(this.cancelarReservaReq, httpOptions )
+      .subscribe(
+        (data) => {
+        console.log("reserva ok")
+        Swal.fire('Cancelada', 'La reserva ha sido cancelada', 'success');
+        },
+        (error) => {
+          console.error('Error no se puede cancelar la reserva', error);
+          Swal.fire('Error', 'No se pudo cancelar la reserva. Inténtelo de nuevo más tarde.', 'error');
+        }
+      );
 }
 
 }
