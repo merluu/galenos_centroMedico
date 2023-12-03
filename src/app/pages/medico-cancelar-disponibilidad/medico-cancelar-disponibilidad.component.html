@@ -1,8 +1,8 @@
 <app-header></app-header>
 <br>
+<h2>Usted está cancelando la Disponibilidad para el Médico  {{ runMedico }} {{ nombresMedico }} {{ apePaternoMedico }} </h2>
 
-<h2>Usted está reservando hora con el Médico {{ runMedico }} {{ nombresMedico }} {{ apePaternoMedico }}</h2>
-<br>
+
 <div class="container custom-container-2 mt-5">
     <!-- Show it when there is no paciente -->
     <div class="no-data text-center" *ngIf="disponibilidadesLoading">
@@ -40,44 +40,21 @@
         </table>
     </div>
     </div>
+    <br>
     <div class="container">
         <div class="reserva-form">
-        <h3>Ingrese sus Datos para la Reserva</h3>
-    <form [formGroup]="reservaForm">
+    <form [formGroup]="myForm">
         <div class="form-group">
-            <input type="text"  id="run_medico_disponibilidad" formControlName="run_medico_disponibilidad"  [hidden]="true">
-            </div>
-            <div class="form-group">
-                <label for="user">Ingrese su Run</label>
-                <input type="text"  id="run_paciente" formControlName="run_paciente">
+            <input type="text"  id="run" formControlName="run_medico"  [hidden]="true">
             </div>
         <div class="form-group">
-        <label for="email"> Ingrese Correo Electrónico</label>
-        <input type="email"  id="email" formControlName="correo_paciente">
-        </div>
-        <div>
-        <label for="metodo_pago">Método de Pago</label>
-        <select class="form-select" id="metodo_pago" formControlName="metodo_pago">
-            <option value="1">Crédito</option>
-            <option value="2">Débito</option>
-            <option value="2">Efectivo</option>
-        </select>
-        <div class="form-group">
-            <input type="text"  id="fecha_disponibilidad" formControlName="fecha_disponibilidad"  [hidden]="true">
+            <input type="text"  id="fecha" formControlName="fecha"  [hidden]="true">
         </div>
         <div class="form-group">
-            <input type="text"  id="id_bloque_disponibilidad" formControlName="id_bloque_disponibilidad"  [hidden]="true">
+            <input type="text"  id="id_bloque" formControlName="id_bloque"  [hidden]="true">
         </div>
-    </div>
-            <button type="submit" (click)="addReserva()">Reservar Hora</button>
+            <button type="submit" (click)="cancelDisponibilidad()">Cancelar Disponibilidad</button>
     </form>
 </div>
 </div>
-    <div class="text-center">
-        <!--<button (click)="redirigirSiSeleccionado()" class="btn btn-primary" [disabled]="!selectedMedico"> 
-        Seleccionar Médico</button>-->
-    </div>
-</div>
-
-
 

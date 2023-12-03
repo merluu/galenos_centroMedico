@@ -36,6 +36,13 @@ export class MedicoListComponent implements OnInit {
     this.router.navigate([`/medico-agregar-disponibilidad/${rut}`]);
   }
 
+  cancelarDisponibilidadMedico(medico: Medico) {
+    const rut = medico.run_medico; 
+    const nombres = medico.nombres;
+    const ape_paterno = medico.ape_paterno;  
+    this.router.navigate([`/medico-cancelar-disponibilidad/${rut}/${nombres}/${ape_paterno}`]);
+  }
+
   agregarMedico() {
     this.router.navigate(['/medico-agregar']);
   }

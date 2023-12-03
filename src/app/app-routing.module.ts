@@ -13,7 +13,9 @@ import { MedicoAgregarDisponibilidadComponent } from './pages/medico-agregar-dis
 import { CentroEspecialidadComponent } from './pages/centro-especialidad/centro-especialidad.component'; 
 import {MedicoListCentroEspeComponent } from './pages/medico-list-centro-espe/medico-list-centro-espe.component';
 import { ReservarHoraComponent } from './pages/reservar-hora/reservar-hora.component';
-
+import { MedicoCancelarDisponibilidadComponent } from './pages/medico-cancelar-disponibilidad/medico-cancelar-disponibilidad.component';
+import { RutCancelarReservaComponent } from './pages/rut-cancelar-reserva/rut-cancelar-reserva.component';
+import { CancelarReservaPacienteComponent } from './pages/cancelar-reserva-paciente/cancelar-reserva-paciente.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +30,10 @@ const routes: Routes = [
   { path: 'medico-agregar-disponibilidad/:rut', component: MedicoAgregarDisponibilidadComponent},
   { path: 'centro-especialidad', component: CentroEspecialidadComponent },
   { path: 'medico-list-centro-espe/:centroId/:especialidadId', component: MedicoListCentroEspeComponent },
-  {path: 'reservar-hora/:run_medico/:nombres/:ape_paterno',component: ReservarHoraComponent }
+  {path: 'reservar-hora/:run_medico/:nombres/:ape_paterno',component: ReservarHoraComponent },
+  { path: 'medico-cancelar-disponibilidad/:rut/:nombres/:ape_paterno', component: MedicoCancelarDisponibilidadComponent},
+  { path: 'rut-cancelar-reserva', component: RutCancelarReservaComponent},
+  { path: 'cancelar-reserva-paciente/:rut', component: CancelarReservaPacienteComponent},
 
 
 

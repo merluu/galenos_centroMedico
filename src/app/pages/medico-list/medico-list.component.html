@@ -7,7 +7,7 @@
     </div>
     <!-- Employees list table, it hides when there is no paciente -->
     <div *ngIf="medico.length !== 0">
-    <h3 class="mb-3 text-center">Lista Mèdicos</h3>
+    <h3 class="mb-3 text-center">Lista Médicos</h3>
     <div class="col-md-12">
         <table class="table table-bordered">
         <thead>
@@ -27,11 +27,14 @@
             <td>{{ medico.ape_paterno }}</td>
             <td>{{ medico.ape_materno }}</td>
             <td>{{ medico.correo }}</td>
-            <td>
+            <!--<td>
                 <button (click)="modificarMedico(medico)" class="btn btn-primary">Modificar</button>
-            </td>
+            </td>-->
             <td>
                 <button (click)="disponibilidadMedico(medico)" class="btn btn-primary">Agregar Disponibilidad</button>
+            </td>
+            <td>
+                <button (click)="cancelarDisponibilidadMedico(medico)" class="btn btn-primary">Cancelar Disponibilidad</button>
             </td>
             </tr>
         </tbody>
@@ -43,4 +46,4 @@
     </div>
 </div>
 <br>
-<app-footer> </app-footer>
+

@@ -67,6 +67,15 @@ export class ServicioMedicoService {
     );
   }
 
+   // para cancelar la disponibilidad del médico
+  quitarDisponibilidad(disponibilidad: any, httpOptions: any): Observable<HttpEvent<Disponibilidad>> {
+    return this.http.put<Disponibilidad>(
+      this.basepath + '/api/medicos/quitar-disponibilidad',
+      JSON.stringify(disponibilidad),
+      httpOptions
+    );
+  }
+
   
   
 }

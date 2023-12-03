@@ -1,0 +1,55 @@
+<app-header></app-header>
+<br>
+<div class="container custom-container-2 mt-5">
+    <!--Show it when there is no paciente-->
+    <div class="no-data text-center" *ngIf="reservas.length == 0">
+        <p *ngIf="!loadingReservas">No se encontraron reservas asociadas al Rut.</p>
+        <p *ngIf="loadingReservas">Cargando Reservas...</p>
+    </div>
+    <!--Employees list table, it hides when there is no paciente -->
+    <div *ngIf="reservas.length !== 0">
+    <h3 class="mb-3 text-center">Seleccione Reserva a Anular </h3>
+    <div class="col-md-12">
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th scope="col" >Bloque Reserva</th>
+            <th scope="col" >fecha</th>
+            <th scope="col" >Run Médico</th>
+            <th scope="col" >Run Paciente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reserva of reservas">
+        <!--<td>{{ reserva.id_bloque_disponibilidad }}-->
+            <td>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==1">09:00-09:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==2">10:00-10:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==3">11:00-11:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==4">12:00-12:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==5">13:00-13:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad == 6">14:00-14:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==7">15:00-15:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==8">16:00-16:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==9">17:00-17:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==10">18:00-18:59</p>
+                    <p *ngIf="+reserva.id_bloque_disponibilidad ==11">19:00-20:00</p>
+            </td>
+            <td>{{ reserva.fecha_disponibilidad }}</td>
+            <td>{{ reserva.run_medico_disponibilidad }}</td>
+            <td>{{ reserva.run_paciente }}</td>
+            <td>
+                <input type="radio" name="radioGroup"  [checked]="reserva === selectedReserva" (change)="seleccionarReserva(reserva)">
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="text-center">
+        <button (click)="cancelarReserva()" class="btn btn-primary" [disabled]="!selectedReserva">
+            Anular Reserva
+        </button>
+    </div>
+    <br>
+</div>
