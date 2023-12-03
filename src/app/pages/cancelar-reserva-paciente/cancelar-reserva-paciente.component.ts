@@ -18,6 +18,7 @@ export class CancelarReservaPacienteComponent {
   run_paciente: string; 
   selectedReserva: Reserva | null = null;
   disponibilidadSeleccionada: string; 
+  loadingReservas: boolean = true; // Inicialmente, establecido en true
 
   constructor(private router: Router,public restApi: ServicioReservaService, private route: ActivatedRoute) {
     this.run_paciente = this.route.snapshot.params['rut'];
@@ -48,13 +49,17 @@ export class CancelarReservaPacienteComponent {
       .subscribe(
         (data) => {
           this.reservas = data;
+          //this.loadingReservas = false; // La carga se ha completado
         },
         (error) => {
-          console.error('Error al cargar los médicos', error);
+          console.error('Error al cargar las reservas', error);
         }
-      );
-  }
-
+        )
+    .add(() => {
+      this.loadingReservas = false; // Se ejecutará tanto en caso de éxito como en caso de error
+    });
+}
+  
 cancelarReserva() {
   if (this.selectedReserva) {
       const { id_bloque_disponibilidad, fecha_disponibilidad, run_medico_disponibilidad, run_paciente } = this.selectedReserva;
@@ -103,7 +108,8 @@ realizarCancelacion() {
       .subscribe(
         (data) => {
         console.log("reserva ok")
-        Swal.fire('Cancelada', 'La reserva ha sido cancelada', 'success');
+        Swal.fire('Cancelada', 'La reserva ha sido cancelada exitosamente', 'success');
+        this.router.navigate(['']); 
         },
         (error) => {
           console.error('Error no se puede cancelar la reserva', error);

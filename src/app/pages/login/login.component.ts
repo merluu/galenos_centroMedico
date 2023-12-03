@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         this.loginService.loginPaciente(loginData, httpOptions).subscribe((response: HttpEvent<boolean>) => {
           if (response) {
             console.log('Usuario valido.');
+            Swal.fire('ok', 'Ha iniciado sesión correctamente', 'success');
             this.router.navigate(['/']);
           } else {
             console.log('Usuario inválido.');

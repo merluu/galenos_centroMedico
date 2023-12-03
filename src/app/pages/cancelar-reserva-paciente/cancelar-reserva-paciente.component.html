@@ -3,7 +3,8 @@
 <div class="container custom-container-2 mt-5">
     <!--Show it when there is no paciente-->
     <div class="no-data text-center" *ngIf="reservas.length == 0">
-    <p>Cargando Reservas</p>
+        <p *ngIf="!loadingReservas">No se encontraron reservas asociadas al Rut.</p>
+        <p *ngIf="loadingReservas">Cargando Reservas...</p>
     </div>
     <!--Employees list table, it hides when there is no paciente -->
     <div *ngIf="reservas.length !== 0">
